@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FashionAllTheWay.Entities
 {
-    public class AppUser:IdentityUser
+    public class ApplicationUser:IdentityUser
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
