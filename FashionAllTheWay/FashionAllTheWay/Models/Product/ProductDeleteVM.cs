@@ -1,6 +1,4 @@
-﻿using FashionAllTheWay.Models.Brand;
-using FashionAllTheWay.Models.Category;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,46 +6,32 @@ using System.Threading.Tasks;
 
 namespace FashionAllTheWay.Models.Product
 {
-    public class ProductCreateVM
+    public class ProductDeleteVM
     {
-        
-    
-        public ProductCreateVM()
-        {
-            Brands = new List<BrandPairVM>();
-            Categories = new List<CategoryPairVM>();
-
-        }
-        [Key]
         public int Id { get; set; }
-        [Required]
-        [MaxLength(30)]
+
         [Display(Name = "Product Name")]
 
         public string ProductName { get; set; }
-        [Required]
+        public int BrandId { get; set; }
         [Display(Name = "Brand")]
 
-        public int BrandId { get; set; }
-
-        public virtual List<BrandPairVM> Brands { get; set; }
-        [Required]
+        public int BrandName { get; set; }
+        public int CategoryId { get; set; }
         [Display(Name = "Category")]
 
-        public int CategoryId { get; set; }
-
-        public virtual List<CategoryPairVM> Categories { get; set; }
-        [Required]
+        public int CategoryName { get; set; }
         [Display(Name = "Description")]
         public string Description { get; set; }
         [Required]
         [Display(Name = "Size")]
         public string Size { get; set; }
+
         [Display(Name = "Picture")]
+
         public string Picture { get; set; }
-        [Required]
-        [Range(0, 5000)]
-        [Display(Name= "Quantity")]
+
+        [Display(Name = "Quantity")]
         public int Quantity { get; set; }
         [Required]
         [Display(Name = "Price")]
@@ -57,5 +41,4 @@ namespace FashionAllTheWay.Models.Product
 
         public decimal Discount { get; set; }
     }
-    
 }

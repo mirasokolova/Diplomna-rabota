@@ -18,7 +18,7 @@ namespace FashionAllTheWay.Services
             _context = context;
         }
 
-        public bool Create(string name, int brandId, int categoryId, string picture, string description, string size, int quantity, decimal price, decimal discount)
+        public bool Create(string name, int brandId, int categoryId, string description, string size, string picture, int quantity, decimal price, decimal discount)
         {
             Product item = new Product
             {
@@ -79,7 +79,7 @@ namespace FashionAllTheWay.Services
             }
             return products;
         }
-        public bool Update(int productId, string name, int brandId, int categoryId, string picture, string description, string size ,int quantity, decimal price, decimal discount)
+        public bool Update(int productId, string name, int brandId, int categoryId, string description, string size , string picture, int quantity, decimal price, decimal discount)
         {
             var product = GetProductById(productId);
             if (product == default(Product))

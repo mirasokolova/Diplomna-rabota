@@ -8,11 +8,9 @@ using System.Threading.Tasks;
 
 namespace FashionAllTheWay.Models.Product
 {
-    public class ProductCreateVM
+    public class ProductEditVM
     {
-        
-    
-        public ProductCreateVM()
+        public ProductEditVM()
         {
             Brands = new List<BrandPairVM>();
             Categories = new List<CategoryPairVM>();
@@ -44,10 +42,11 @@ namespace FashionAllTheWay.Models.Product
         [Display(Name = "Size")]
         public string Size { get; set; }
         [Display(Name = "Picture")]
+
         public string Picture { get; set; }
         [Required]
         [Range(0, 5000)]
-        [Display(Name= "Quantity")]
+        [Display(Name = "Quantity")]
         public int Quantity { get; set; }
         [Required]
         [Display(Name = "Price")]
@@ -56,6 +55,6 @@ namespace FashionAllTheWay.Models.Product
         [Display(Name = "Discount")]
 
         public decimal Discount { get; set; }
-    }
     
+    }
 }

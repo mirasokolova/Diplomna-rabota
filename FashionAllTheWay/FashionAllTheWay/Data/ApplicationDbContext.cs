@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using FashionAllTheWay.Models.Product;
 
 namespace FashionAllTheWay.Data
 {
@@ -18,5 +19,10 @@ namespace FashionAllTheWay.Data
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<FashionAllTheWay.Models.Product.ProductCreateVM> ProductCreateVM { get; set; }
+        public DbSet<FashionAllTheWay.Models.Product.ProductIndexVM> ProductIndexVM { get; set; }
+        public DbSet<FashionAllTheWay.Models.Product.ProductEditVM> ProductEditVM { get; set; }
+        public DbSet<FashionAllTheWay.Models.Product.ProductDetailsVM> ProductDetailsVM { get; set; }
+        public DbSet<FashionAllTheWay.Models.Product.ProductDeleteVM> ProductDeleteVM { get; set; }
     }
 }
