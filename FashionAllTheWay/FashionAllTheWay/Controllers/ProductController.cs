@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace FashionAllTheWay.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class ProductController : Controller
     {
         private readonly IProductService _productService;

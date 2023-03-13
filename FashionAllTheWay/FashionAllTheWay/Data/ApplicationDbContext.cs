@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using FashionAllTheWay.Models.Product;
+using FashionAllTheWay.Models.Order;
 
 namespace FashionAllTheWay.Data
 {
@@ -24,5 +25,7 @@ namespace FashionAllTheWay.Data
         public DbSet<FashionAllTheWay.Models.Product.ProductEditVM> ProductEditVM { get; set; }
         public DbSet<FashionAllTheWay.Models.Product.ProductDetailsVM> ProductDetailsVM { get; set; }
         public DbSet<FashionAllTheWay.Models.Product.ProductDeleteVM> ProductDeleteVM { get; set; }
+        public DbSet<FashionAllTheWay.Models.Order.OrderConfirmVM> OrderConfirmVM { get; set; }
+        public DbSet<FashionAllTheWay.Models.Order.OrderIndexVM> OrderIndexVM { get; set; }
     }
 }

@@ -5,34 +5,30 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FashionAllTheWay.Entities
+namespace FashionAllTheWay.Models.Order
 {
-    public class Order
+    public class OrderConfirmVM
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public int Id { get; set; }
-        [Required]
 
-        public DateTime OrderDate { get; set; }
+        public string UserId { get; set; }
+        public string User { get; set; }
         [Required]
         public int ProductId { get; set; }
-        [Required]
-        public virtual Product Product { get; set; }
-        [Required]
-        public string UserId { get; set; }
-        public virtual ApplicationUser User { get; set; }
+        public string ProductName { get; set; }
+        public string Description { get; set; }
         public string Size { get; set; }
+        public string Picture { get; set; }
+        [Required]
+        [Range(1, int.MaxValue)]
+        [Display(Name = "Quantity")]
         public int Quantity { get; set; }
+
         public decimal Price { get; set; }
         public decimal Discount { get; set; }
-        public decimal TotalPrice
-        {
-            get
-            {
-                return Quantity * Price - Quantity * Price * Discount / 100;
-            }
-        }
-
-
+        public decimal TotalPrice { get; set; }
     }
 }
+    
