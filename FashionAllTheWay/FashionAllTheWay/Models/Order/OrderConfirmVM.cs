@@ -18,8 +18,7 @@ namespace FashionAllTheWay.Models.Order
         [Required]
         public int ProductId { get; set; }
         public string ProductName { get; set; }
-        public string Description { get; set; }
-        public string Size { get; set; }
+        
         public string Picture { get; set; }
         [Required]
         [Range(1, int.MaxValue)]

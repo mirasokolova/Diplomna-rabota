@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace FashionAllTheWay.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class OrderController : Controller
     {
         // GET: OrderController
@@ -35,8 +36,6 @@ namespace FashionAllTheWay.Controllers
                 User = x.User.UserName,
                 ProductId = x.ProductId,
                 Product = x.Product.ProductName,
-                Description = x.Product.Description,
-                Size=x.Product.Size,
                 Picture = x.Product.Picture,
                 Quantity = x.Quantity,
                 Price = x.Price,
@@ -62,8 +61,6 @@ namespace FashionAllTheWay.Controllers
                 User = x.User.UserName,
                 ProductId = x.ProductId,
                 Product = x.Product.ProductName,
-                Description = x.Product.Description,
-                Size = x.Product.Size,
                 Picture = x.Product.Picture,
                 Quantity = x.Quantity,
                 Price = x.Price,
@@ -102,8 +99,6 @@ namespace FashionAllTheWay.Controllers
                 User = user.UserName,
                 ProductId = productId,
                 ProductName = product.ProductName,
-                Description = product.Description,
-                Size = product.Size,
                 Picture = product.Picture,
                 Quantity = quantity,
                 Price = product.Price,
@@ -134,7 +129,7 @@ namespace FashionAllTheWay.Controllers
                     OrderDate = DateTime.UtcNow,
                     ProductId = bindingModel.ProductId,
                     UserId = userId,
-                    Size = product.Size,
+                   
                     Quantity = bindingModel.Quantity,
                     Price = product.Price,
                     Discount = product.Discount,

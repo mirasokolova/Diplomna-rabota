@@ -15,24 +15,19 @@
             <th>
                 @Html.DisplayNameFor(model => model.OrderDate)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.UserId)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.User)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.ProductId)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Product)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Size)
-            </th>
+           
             <th>
                 @Html.DisplayNameFor(model => model.Picture)
             </th>
@@ -58,24 +53,19 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.OrderDate)
                 </td>
-                <td>
+                @*<td>
                     @Html.DisplayFor(modelItem => item.UserId)
-                </td>
+                </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.User)
                 </td>
-                <td>
+                @*<td>
                     @Html.DisplayFor(modelItem => item.ProductId)
-                </td>
+                </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.Product)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Size)
-                </td>
+              
                 <td>
                     <img scr="@Html.DisplayFor(modelItem=> item.Picture)" alt="Image" width="100" />
                     @*@Html.DisplayFor(modelItem => item.Picture)*@

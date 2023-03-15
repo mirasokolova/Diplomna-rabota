@@ -21,7 +21,7 @@ namespace FashionAllTheWay.Entities
         [Required]
         public string UserId { get; set; }
         public virtual ApplicationUser User { get; set; }
-        public string Size { get; set; }
+       
         public int Quantity { get; set; }
         public decimal Price { get; set; }
         public decimal Discount { get; set; }
