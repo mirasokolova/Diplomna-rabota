@@ -32,19 +32,21 @@ namespace FashionAllTheWay.Controllers
         {
             List<ProductIndexVM> products = _productService.GetProducts(searchStringCategoryName, searchStringBrandName)
                 .Select(product => new ProductIndexVM
-            {
-                Id = product.Id,
-                ProductName = product.ProductName,
-                BrandId = product.BrandId,
+                {
+                    Id = product.Id,
+                    ProductName = product.ProductName,
+                    BrandId = product.BrandId,
+                    BrandName = product.Brand.BrandName,
                 CategoryId = product.CategoryId,
-                Description=product.Description,
-                Size=product.Size,
-                Picture = product.Picture,
-                Quantity = product.Quantity,
-                Price = product.Price,
-                Discount = product.Discount
+                    CategoryName = product.Category.CategoryName,
+                    Description = product.Description,
+                    Size = product.Size,
+                    Picture = product.Picture,
+                    Quantity = product.Quantity,
+                    Price = product.Price,
+                    Discount = product.Discount
 
-            }).ToList();
+                }).ToList();
             return this.View(products);
         }
 
