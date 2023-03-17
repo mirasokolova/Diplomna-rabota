@@ -44,6 +44,7 @@ namespace FashionAllTheWay
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IBrandService, BrandService>();
             services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<IStatisticsService, StatisticsService>();
             //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
             //    .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
