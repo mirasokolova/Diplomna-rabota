@@ -1,18 +1,39 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-<div>
-    <video controls autoplay>
-
-        <source src="~/Picture/viva magenta.mp4" type="video/ogg">
-
-    </video>
-
-    <style>
-        video {
-            max-width: 100%;
-            height: auto;
-        }
-     </style>
-
+<div id="carouselSlidesOnly" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <img class="d-block w-100" src="~/Picture/1.png" alt="1" />
+    </div>
+    <div class="carousel-item">
+        <img class="d-block w-100" src="~/Picture/2.png" alt="2" />
+    </div>
+    <div class="carousel-item">
+        <img class="d-block w-100" src="~/Picture/3.png" alt="3" />
+    </div>
 </div>
+
+<script>
+    var slideShow = function (container) {
+        this.images = []
+        this.curImage = 0;
+        for (i = 0; i < container.childElementCount; i++) {
+            this.images.push(container.children[i])
+            this.images[i].style.display = "none"
+        }
+
+        var nextSlide = function () {
+            for (var i = 0; i < this.images.length; i++) {
+                this.images[i].style.display = "none"
+            }
+            this.images[this.curImage].style.display = "block"
+            this.curImage++
+            if (this.curImage >= this.images.length) {
+                this.curImage = 0
+            }
+            window.setTimeout(nextSlide.bind(this), 3000)
+        }
+        nextSlide.call(this)
+    }
+    slideShow(document.getElementById("carouselSlidesOnly"))
+</script>

@@ -19,7 +19,7 @@
             </style>
             <div class="container">
                 @*<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">FashionAllTheWay</a>*@
-                </style>
+                
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -30,32 +30,40 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Index">All Products</a>
                         </li>
-                        @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
+                        @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Client")))
                         {
-                            <li class="nav-item active">
-                                <div class="dropdown show">
-                                    <a class="nav-link active dropdown-toggle" href="#"
-                                       id="dropdownMenuLink"
-                                       data-toggle="dropdown"
-                                       aria-haspopup="true"
-                                       aria-expanded="false">
-                                        Statistic Modul
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" asp-controller="Client" asp-action="Index">Clients</a>
-                                        <a class="dropdown-item" asp-controller="Order" asp-action="Index">Orders</a>
-                                        <a class="dropdown-item" asp-controller="Statistics" asp-action="Index">Statistics</a>
-                                    </div>
-                                </div>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="MyOrders">My orders</a>
+                            </li>
+                        }
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                             </li>
 
-                        }
-                    </ul>
+
+                            @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
+                            {
+                                <li class="nav-item active">
+                                    <div class="dropdown show">
+                                        <a class="nav-link active dropdown-toggle" href="#"
+                                           id="dropdownMenuLink"
+                                           data-toggle="dropdown"
+                                           aria-haspopup="true"
+                                           aria-expanded="false">
+                                            Statistic Modul
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                            <a class="dropdown-item" asp-controller="Client" asp-action="Index">Clients</a>
+                                            <a class="dropdown-item" asp-controller="Order" asp-action="Index">Orders</a>
+                                            <a class="dropdown-item" asp-controller="Statistics" asp-action="Index">Statistics</a>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            }
+                        </ul>
                     <partial name="_LoginPartial" />
                 </div>
             </div>
