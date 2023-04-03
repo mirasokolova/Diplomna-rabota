@@ -17,11 +17,11 @@ namespace FashionAllTheWay.Models.Product
         public int BrandId { get; set; }
         [Display(Name = "Brand")]
 
-        public int BrandName { get; set; }
+        public string BrandName { get; set; }
         public int CategoryId { get; set; }
         [Display(Name = "Category")]
 
-        public int CategoryName { get; set; }
+        public string CategoryName { get; set; }
 
         [Display(Name = "Description")]
         public string Description { get; set; }

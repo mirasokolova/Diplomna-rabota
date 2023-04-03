@@ -6,131 +6,149 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>All products</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductName)
-            </th>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.BrandId)
-                </th>*@
-            <th>
-                @Html.DisplayNameFor(model => model.BrandName)
-            </th>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.CategoryId)
-                </th>*@
-            <th>
-                @Html.DisplayNameFor(model => model.CategoryName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Size)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Picture)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Discount)
-            </th>
+<br>
+<form asp-controller="Product" asp-action="Index" method="get">
+    <p>
+        Category :<input type="text" name="searchStringCategoryName" />
+        <br><br>
+        Brand :<input type="text" name="searchStringBrandName" />
+                   <input type="submit" value="Filter" />
+    </p>
+</form>
+<form asp-controller="Product" asp-action="Sort" method="get">
+    <p>
 
-            @if (this.User.Identity.IsAuthenticated)
-            {
-                <th>
-                    Order
-                </th>
-            }
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+        <input type="submit" value="Sort by price: low to high" />
+    </p>
+</form>
+@if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
+{
+    <p>
+        <a asp-action="Create">Create new </a>
+    </p>
+}
+    <table class="table">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProductName)
-                </td>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.BrandId)
-                    </td>*@
-                <td>
-                    @Html.DisplayFor(modelItem => item.BrandName)
-                </td>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.CategoryId)
-                    </td>*@
-                <td>
-                    @Html.DisplayFor(modelItem => item.CategoryName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Size)
-                </td>
-                <td>
-                    <img src="@Html.DisplayFor(modelItem => item.Picture)" alt="Image" width="100" />
-                  
-                    @*@Html.DisplayFor(modelItem => item.Picture)*@
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Quantity)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Discount)%
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductName)
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.BrandId)
+                    </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.BrandName)
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.CategoryId)
+                    </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.CategoryName)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.Size)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Picture)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Quantity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Discount)
+                </th>
+
                 @if (this.User.Identity.IsAuthenticated)
                 {
-                    <td>
-                        @await Html.PartialAsync("_OrderPartialView",new OrderConfirmVM
-                        {
-                            ProductId = item.Id
-                        })
-                    </td>
+                    <th>
+                        Order
+                    </th>
                 }
-                <td>
-                    @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
-                    {
-
-                        <a asp-action="Edit" asp-route-id="@item.Id"> Edit </a>
-
-                    } 
-                    | <a asp-action="Details" asp-route-id="@item.Id"> Details </a>|
-
-                    @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
-                    {
-
-                        <a asp-action="Delete" asp-route-id="@item.Id"> Delete </a>
-
-                    }
-                </td>
-                @*<td>
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                    </td>*@
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
-@section Scripts
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductName)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.BrandId)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BrandName)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.CategoryId)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CategoryName)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Size)
+                    </td>
+                    <td>
+                        <img src="@Html.DisplayFor(modelItem => item.Picture)" alt="Image" width="100" />
+
+                        @*@Html.DisplayFor(modelItem => item.Picture)*@
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Discount)%
+                    </td>
+                    @if (this.User.Identity.IsAuthenticated)
+                    {
+                        <td>
+                            @await Html.PartialAsync("_OrderPartialView", new OrderConfirmVM
+                            {
+                                ProductId = item.Id
+                            })
+                        </td>
+                    }
+                    <td>
+                        @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
+                        {
+
+                            <a asp-action="Edit" asp-route-id="@item.Id"> Edit </a>
+
+                        }
+                        | <a asp-action="Details" asp-route-id="@item.Id"> Details </a>|
+
+                        @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
+                        {
+
+                            <a asp-action="Delete" asp-route-id="@item.Id"> Delete </a>
+
+                        }
+                    </td>
+                    @*<td>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>*@
+                </tr>
+            }
+        </tbody>
+    </table>
+    @section Scripts
 {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-   }
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

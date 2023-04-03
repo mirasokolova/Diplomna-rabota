@@ -38,32 +38,51 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="MyOrders">My orders</a>
                             </li>
                         }
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item active">
+                            <div class="dropdown show">
+                                <a class="nav-link active dropdown-toggle" href="#"
+                                   id="dropdownMenuLink"
+                                   data-toggle="dropdown"
+                                   aria-haspopup="true"
+                                   aria-expanded="false">
+                                    Category
+                                </a> 
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="/Product?searchStringCategoryName=Accessories&searchStringBrandName=">Accessories</a>
+                                    <a class="dropdown-item" href="/Product?searchStringCategoryName=Bags&searchStringBrandName=">Bags</a>
+                                    <a class="dropdown-item" href="/Product?searchStringCategoryName=Clothes+for+women&searchStringBrandName=">Clothes for women</a>
+                                    <a class="dropdown-item" href="//Product?searchStringCategoryName=Clothes+for+men&searchStringBrandName=">Clothes for men</a>
+                                    <a class="dropdown-item" href="/Product?searchStringCategoryName=Shoes+for+women&searchStringBrandName=">Shoes for women</a>
+                                    <a class="dropdown-item" href="/Product?searchStringCategoryName=Shoes+for+women&searchStringBrandName=">Shoes for men</a>
+                                </div>
+                                </div>
                             </li>
 
-
-                            @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
-                            {
-                                <li class="nav-item active">
-                                    <div class="dropdown show">
-                                        <a class="nav-link active dropdown-toggle" href="#"
-                                           id="dropdownMenuLink"
-                                           data-toggle="dropdown"
-                                           aria-haspopup="true"
-                                           aria-expanded="false">
-                                            Statistic Modul
-                                        </a>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <a class="dropdown-item" asp-controller="Client" asp-action="Index">Clients</a>
-                                            <a class="dropdown-item" asp-controller="Order" asp-action="Index">Orders</a>
-                                            <a class="dropdown-item" asp-controller="Statistics" asp-action="Index">Statistics</a>
-                                        </div>
+                              @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
+                               {
+                                 <li class="nav-item active">
+                                <div class="dropdown show">
+                                    <a class="nav-link active dropdown-toggle" href="#"
+                                       id="dropdownMenuLink"
+                                       data-toggle="dropdown"
+                                       aria-haspopup="true"
+                                       aria-expanded="false">
+                                        Statistic Modul
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <a class="dropdown-item" asp-controller="Client" asp-action="Index">Clients</a>
+                                        <a class="dropdown-item" asp-controller="Order" asp-action="Index">Orders</a>
+                                        <a class="dropdown-item" asp-controller="Statistics" asp-action="Index">Statistics</a>
+                                        
                                     </div>
-                                </li>
+                                </div>
+                            </li>
 
-                            }
-                        </ul>
+                        }
+                            </ul>
                     <partial name="_LoginPartial" />
                 </div>
             </div>

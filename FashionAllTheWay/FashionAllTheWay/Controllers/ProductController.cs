@@ -64,8 +64,11 @@ namespace FashionAllTheWay.Controllers
                 Id = item.Id,
                 ProductName = item.ProductName,
                 BrandId = item.BrandId,
+                BrandName=item.Brand.BrandName,
                 CategoryId = item.CategoryId,
+                CategoryName=item.Category.CategoryName,
                 Picture = item.Picture,
+                Description=item.Description,
                 Quantity = item.Quantity,
                 Price = item.Price,
                 Discount = item.Discount
@@ -214,6 +217,26 @@ namespace FashionAllTheWay.Controllers
         public IActionResult Success()
         {
             return View();
+        }
+        public IActionResult Sort()
+        {
+            List<ProductIndexVM> products = _productService.GetProducts().Select(product => new ProductIndexVM
+            {
+                Id = product.Id,
+                ProductName = product.ProductName,
+                BrandId = product.BrandId,
+                BrandName = product.Brand.BrandName,
+                CategoryId = product.CategoryId,
+                CategoryName = product.Category.CategoryName,
+                Description = product.Description,
+                Size = product.Size,
+                Picture = product.Picture,
+                Quantity = product.Quantity,
+                Price = product.Price,
+                Discount = product.Discount
+            }).OrderBy(x => x.Price).ToList();
+
+            return View(products);
         }
     }
 }
